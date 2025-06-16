@@ -1,0 +1,12 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "node backend/server.js"
+healthcheckPath = "/"
+healthcheckTimeout = 300
+restartPolicyType = "on-failure"
+
+[env]
+NODE_ENV = "production"
+PORT = "$PORT"
