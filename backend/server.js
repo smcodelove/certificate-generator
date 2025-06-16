@@ -391,6 +391,23 @@ app.post('/preview-certificate', async (req, res) => {
   }
 });
 
+// Puppeteer configuration for Railway
+const puppeteerConfig = {
+  headless: true,
+  args: [
+    '--no-sandbox',
+    '--disable-setuid-sandbox',
+    '--disable-dev-shm-usage',
+    '--disable-accelerated-2d-canvas',
+    '--no-first-run',
+    '--no-zygote',
+    '--single-process',
+    '--disable-gpu'
+  ],
+  executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || '/usr/bin/chromium'
+};
+
+
 // API: Generate certificates as individual images
 app.post('/generate-certificates', async (req, res) => {
   let browser;

@@ -1,0 +1,21 @@
+[build]
+builder = "nixpacks"
+buildCommand = "npm ci --production=false"
+
+[deploy]
+healthcheckPath = "/"
+healthcheckTimeout = 300
+restartPolicyType = "always"
+
+[build.env]
+NODE_ENV = "production"
+PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = "true"
+PUPPETEER_EXECUTABLE_PATH = "/usr/bin/chromium"
+
+[service]
+type = "web"
+port = 3000
+
+[resources]
+memory = "2GB"
+cpu = "2"
